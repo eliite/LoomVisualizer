@@ -684,11 +684,11 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="mainLabel" alignment="0" pref="205" max="32767" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
+                  <Component id="mainLabel" alignment="0" max="32767" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
                       <Component id="pegLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="pegTextField" max="32767" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="pegTextField" min="-2" pref="93" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -697,7 +697,6 @@
                                   <Component id="repeatLabel" alignment="1" max="32767" attributes="0"/>
                                   <Component id="patternLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="oldColorLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           </Group>
@@ -705,13 +704,22 @@
                               <Component id="infoButton" max="32767" attributes="0"/>
                               <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                           </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="patternTextField" max="32767" attributes="0"/>
-                          <Component id="repeatTextField" max="32767" attributes="0"/>
                           <Component id="drawButton" max="32767" attributes="0"/>
                           <Component id="oldColorButton" alignment="0" max="32767" attributes="0"/>
                           <Component id="newColorButton" alignment="1" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="repeatTextField" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="patternTextField" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
                   </Group>
               </Group>
@@ -772,11 +780,17 @@
     <Component class="javax.swing.JLabel" name="pegLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="Number of Pegs"/>
+        <Property name="size" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[100, 16]"/>
+        </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="pegTextField">
       <Properties>
         <Property name="toolTipText" type="java.lang.String" value="How many pegs are on the loom?"/>
+        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[11, 26]"/>
+        </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="repeatLabel">
@@ -787,6 +801,9 @@
     <Component class="javax.swing.JTextField" name="repeatTextField">
       <Properties>
         <Property name="toolTipText" type="java.lang.String" value="How often does the pattern repeat?"/>
+        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[11, 26]"/>
+        </Property>
       </Properties>
       <Events>
         <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="repeatTextFieldFocusLost"/>
@@ -795,6 +812,9 @@
     <Component class="javax.swing.JTextField" name="patternTextField">
       <Properties>
         <Property name="toolTipText" type="java.lang.String" value="Example: ONNON"/>
+        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[11, 26]"/>
+        </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="patternLabel">
