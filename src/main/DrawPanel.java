@@ -52,8 +52,8 @@ public class DrawPanel extends JPanel {
             for (int x = 0; x < n; x++) {
                 counter = clamp(counter, 0, FrameMain.getRepeatNumber());
                 if (y < 6 || y > 13) {
-                    g.setColor(y <= 7 ? FrameMain.getOldColor() :
-                            FrameMain.getNewColor());
+                    g.setColor(y <= 7 ? FrameMain.getNewColor() :
+                            FrameMain.getOldColor());
                     g.fillRect(gap+x*squareGap, y*squareGap, squareSize, squareSize);
                     g.setColor(Color.BLACK);
                     g.drawRect(gap+x*squareGap, y*squareGap, squareSize, squareSize);

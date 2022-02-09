@@ -178,7 +178,6 @@ public class FrameMain extends javax.swing.JFrame {
         );
 
         FrameOldColor.setMinimumSize(new java.awt.Dimension(686, 465));
-        FrameOldColor.setPreferredSize(new java.awt.Dimension(686, 465));
         FrameOldColor.setResizable(false);
         FrameOldColor.setSize(new java.awt.Dimension(686, 465));
 
@@ -324,7 +323,6 @@ public class FrameMain extends javax.swing.JFrame {
         );
 
         warningDialog2.setMinimumSize(new java.awt.Dimension(285, 145));
-        warningDialog2.setPreferredSize(new java.awt.Dimension(285, 145));
         warningDialog2.setResizable(false);
         warningDialog2.setSize(new java.awt.Dimension(285, 145));
 
@@ -370,7 +368,6 @@ public class FrameMain extends javax.swing.JFrame {
         );
 
         warningDialog3.setMinimumSize(new java.awt.Dimension(285, 145));
-        warningDialog3.setPreferredSize(new java.awt.Dimension(285, 145));
         warningDialog3.setResizable(false);
         warningDialog3.setSize(new java.awt.Dimension(285, 145));
 
@@ -416,7 +413,6 @@ public class FrameMain extends javax.swing.JFrame {
         );
 
         warningDialog4.setMinimumSize(new java.awt.Dimension(285, 145));
-        warningDialog4.setPreferredSize(new java.awt.Dimension(285, 145));
         warningDialog4.setResizable(false);
         warningDialog4.setSize(new java.awt.Dimension(285, 145));
 
@@ -462,7 +458,6 @@ public class FrameMain extends javax.swing.JFrame {
         );
 
         warningDialog5.setMinimumSize(new java.awt.Dimension(296, 145));
-        warningDialog5.setPreferredSize(new java.awt.Dimension(296, 145));
         warningDialog5.setResizable(false);
         warningDialog5.setSize(new java.awt.Dimension(296, 145));
 
