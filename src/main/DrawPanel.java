@@ -46,10 +46,10 @@ public class DrawPanel extends JPanel {
         int squareSize = 22;
         int squareGap = 6+squareSize;
         
-        int counter = FrameMain.getPegNumber()-n;
+        int counter = FrameMain.getPegNumber();
 
         for (int y = n-1; y >= 0; y--) {
-            for (int x = 0; x < n; x++) {
+            for (int x = n-1; x >= 0; x--) {
                 counter = clamp(counter, 0, FrameMain.getRepeatNumber());
                 if (y < 6 || y > 13) {
                     g.setColor(y <= 7 ? FrameMain.getNewColor() :
@@ -65,7 +65,7 @@ public class DrawPanel extends JPanel {
                     g.setColor(Color.BLACK);
                     g.drawRect(gap+x*squareGap, y*squareGap, squareSize, squareSize);
                     
-                    if (x >= n-1)
+                    if (x == 0)
                         counter -= (FrameMain.getPegNumber()-n+1);
                     else counter--;
                 }
