@@ -684,11 +684,11 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="mainLabel" alignment="0" max="32767" attributes="0"/>
+                  <Component id="mainLabel" alignment="0" pref="205" max="32767" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="pegLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="pegTextField" min="-2" pref="93" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                      <Component id="pegTextField" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -714,9 +714,9 @@
                           <Component id="oldColorButton" alignment="0" max="32767" attributes="0"/>
                           <Component id="newColorButton" alignment="1" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="repeatTextField" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="repeatTextField" max="32767" attributes="0"/>
                                   <Component id="patternTextField" max="32767" attributes="0"/>
                               </Group>
                           </Group>
