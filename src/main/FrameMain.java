@@ -22,6 +22,7 @@ public class FrameMain extends javax.swing.JFrame {
     static Color color[];
     static int pegNumber, repeatNumber[], rowNumber[];
     static private String pattern[];
+    static private boolean init = false;
     
     private CustomFilter[] cf = new CustomFilter[3];
     
@@ -41,14 +42,16 @@ public class FrameMain extends javax.swing.JFrame {
             if (i < 4) {
                 pattern[i] = "";
                 repeatNumber[i] = 0;
-                rowNumber[i] = 0;
+                rowNumber[i] = 1;
             }
-            color[i] = new Color(i*i*4, i*i*8, i*50);
+            color[i] = new Color(0, 0, 0);
         }
         
         sizeSpinner.setValue(1);
         pegTextField = cf[0].adjustField(pegTextField);
         patternNumTextField = cf[2].adjustField(patternNumTextField);
+        
+        init = true;
     }
 
     /**
@@ -1075,12 +1078,16 @@ public class FrameMain extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void drawButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_drawButtonActionPerformed
+        int total = 0;
+        for (int i = 0; i <= patternComboBox.getSelectedIndex(); i++) 
+            total += rowNumber[i];
+        
         if (pegTextField.getText().isBlank() || 
             Integer.parseInt(pegTextField.getText()) < 2) {
             warningDialog1.setLocation(new Point(this.getLocation().x,
             this.getLocation().y+this.getHeight()));
             warningDialog1.setVisible(true);
-        } else if ((rowNumber[0] + rowNumber[1] + rowNumber[2] + rowNumber[3]) > 17) {
+        } else if (total > 17) {
             warningDialog2.setLocation(new Point(this.getLocation().x,
             this.getLocation().y+this.getHeight()));
             warningDialog2.setVisible(true);
@@ -1106,10 +1113,10 @@ public class FrameMain extends javax.swing.JFrame {
             color[3] = colorChooser4.getColor();
             color[4] = colorChooser5.getColor();
             
-            if (!pattern[0].isBlank()) pattern12Label.setText(pattern[0]);
-            if (!pattern[1].isBlank()) pattern22Label.setText(pattern[1]);
-            if (!pattern[2].isBlank()) pattern32Label.setText(pattern[2]);
-            if (!pattern[3].isBlank()) pattern42Label.setText(pattern[3]);
+            pattern12Label.setText(pattern[0].isBlank() ? "N/A" : pattern[0]);
+            pattern22Label.setText(pattern[1].isBlank() ? "N/A" : pattern[1]);
+            pattern32Label.setText(pattern[2].isBlank() ? "N/A" : pattern[2]);
+            pattern42Label.setText(pattern[3].isBlank() ? "N/A" : pattern[3]);
             
             color1Label.setForeground(color[0]);
             color2Label.setForeground(color[1]);
@@ -1175,7 +1182,7 @@ public class FrameMain extends javax.swing.JFrame {
             else
                 patternNumTextField.setText("");
             
-            sizeSpinner.setValue((rowNumber[patternNumComboBox.getSelectedIndex()]) == 0 ? 1 : rowNumber[patternNumComboBox.getSelectedIndex()]);
+            sizeSpinner.setValue((rowNumber[patternNumComboBox.getSelectedIndex()]));
         }
     }//GEN-LAST:event_patternNumComboBoxItemStateChanged
 
@@ -1220,6 +1227,7 @@ public class FrameMain extends javax.swing.JFrame {
     }//GEN-LAST:event_colorSelectButtonActionPerformed
 
     private void patternComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_patternComboBoxItemStateChanged
+        if (!init) return;
         patternNumComboBox.removeAllItems();
         colorComboBox.removeAllItems();
         
@@ -1228,6 +1236,31 @@ public class FrameMain extends javax.swing.JFrame {
                 patternNumComboBox.addItem(""+i);
             
             colorComboBox.addItem(""+i);
+        }
+        
+        for (int i = 4; i > patternComboBox.getSelectedIndex(); i--) {
+            switch (i) {
+                case 1:
+                    colorChooser2.setColor(new Color(0,0,0));
+                    break;
+                case 2:
+                    colorChooser3.setColor(new Color(0,0,0));
+                    break; 
+                case 3:
+                    colorChooser4.setColor(new Color(0,0,0));
+                    break;
+                case 4:
+                    colorChooser5.setColor(new Color(0,0,0));
+                    break;
+                default:
+                    break;
+            }
+            
+            if (i < 4) {
+                repeatNumber[i] = 0;
+                rowNumber[i] = 1;
+                pattern[i] = "";
+            }
         }
         
         patternNumComboBox.setSelectedIndex(0);

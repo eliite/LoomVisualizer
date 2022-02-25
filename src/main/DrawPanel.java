@@ -65,9 +65,11 @@ public class DrawPanel extends JPanel {
         // bottom solid block
         for (int y = recent_length; y > recent_length-solid; y--) {
             for (int x = n-1; x >= 0; x--) {
+                    Color c = FrameMain.getColor(0);
                     g.setColor(FrameMain.getColor(0));
+                    
                     g.fillRect(gap+x*squareGap, 30+y*squareGap, squareSize, squareSize);
-                    g.setColor(Color.BLACK);
+                    g.setColor((c.getRed() + c.getGreen() + c.getBlue()) > 150 ? Color.BLACK : Color.WHITE);
                     g.drawRect(gap+x*squareGap, 30+y*squareGap, squareSize, squareSize);
             }
         }
@@ -77,11 +79,13 @@ public class DrawPanel extends JPanel {
         for (int y = recent_length; y > recent_length-FrameMain.getRowNumber(0); y--) {
             for (int x = n-1; x >= 0; x--) {
                 counter = clamp(counter, 0, FrameMain.getRepeatNumber(0));
-                g.setColor(pattern[0][counter] ? FrameMain.getColor(1) :
-                            FrameMain.getColor(0));
+                
+                Color c = pattern[0][counter] ? FrameMain.getColor(1) :
+                            FrameMain.getColor(0);
+                g.setColor(c);
 
                 g.fillRect(gap+x*squareGap, 30+y*squareGap, squareSize, squareSize);
-                g.setColor(Color.BLACK);
+                g.setColor((c.getRed() + c.getGreen() + c.getBlue()) > 150 ? Color.BLACK : Color.WHITE);
                 g.drawRect(gap+x*squareGap, 30+y*squareGap, squareSize, squareSize);
 
                 if (x == 0)
@@ -96,11 +100,13 @@ public class DrawPanel extends JPanel {
             for (int y = recent_length; y > recent_length-FrameMain.getRowNumber(1); y--) {
                 for (int x = n-1; x >= 0; x--) {
                     counter = clamp(counter, 0, FrameMain.getRepeatNumber(1));
-                    g.setColor(pattern[1][counter] ? FrameMain.getColor(2) :
-                                FrameMain.getColor(1));
+                    
+                    Color c = pattern[1][counter] ? FrameMain.getColor(2) :
+                                FrameMain.getColor(1);
+                    g.setColor(c);
 
                     g.fillRect(gap+x*squareGap, 30+y*squareGap, squareSize, squareSize);
-                    g.setColor(Color.BLACK);
+                    g.setColor((c.getRed() + c.getGreen() + c.getBlue()) > 150 ? Color.BLACK : Color.WHITE);
                     g.drawRect(gap+x*squareGap, 30+y*squareGap, squareSize, squareSize);
 
                     if (x == 0)
@@ -116,11 +122,13 @@ public class DrawPanel extends JPanel {
             for (int y = recent_length; y > recent_length-FrameMain.getRowNumber(2); y--) {
                 for (int x = n-1; x >= 0; x--) {
                     counter = clamp(counter, 0, FrameMain.getRepeatNumber(2));
-                    g.setColor(pattern[2][counter] ? FrameMain.getColor(3) :
-                                FrameMain.getColor(2));
+                    
+                    Color c = pattern[2][counter] ? FrameMain.getColor(3) :
+                                FrameMain.getColor(2);
+                    g.setColor(c);
 
                     g.fillRect(gap+x*squareGap, 30+y*squareGap, squareSize, squareSize);
-                    g.setColor(Color.BLACK);
+                    g.setColor((c.getRed() + c.getGreen() + c.getBlue()) > 150 ? Color.BLACK : Color.WHITE);
                     g.drawRect(gap+x*squareGap, 30+y*squareGap, squareSize, squareSize);
 
                     if (x == 0)
@@ -136,11 +144,14 @@ public class DrawPanel extends JPanel {
             for (int y = recent_length; y > recent_length-FrameMain.getRowNumber(3); y--) {
                 for (int x = n-1; x >= 0; x--) {
                     counter = clamp(counter, 0, FrameMain.getRepeatNumber(3));
+                    
+                    Color c = pattern[3][counter] ? FrameMain.getColor(4) :
+                                FrameMain.getColor(3);
                     g.setColor(pattern[3][counter] ? FrameMain.getColor(4) :
                                 FrameMain.getColor(3));
 
                     g.fillRect(gap+x*squareGap, 30+y*squareGap, squareSize, squareSize);
-                    g.setColor(Color.BLACK);
+                    g.setColor((c.getRed() + c.getGreen() + c.getBlue()) > 150 ? Color.BLACK : Color.WHITE);
                     g.drawRect(gap+x*squareGap, 30+y*squareGap, squareSize, squareSize);
 
                     if (x == 0)
@@ -154,36 +165,14 @@ public class DrawPanel extends JPanel {
         recent_length -= FrameMain.getRowNumber(FrameMain.getPatternNum()-1);
         for (int y = recent_length; y >= 0; y--) {
             for (int x = n-1; x >= 0; x--) {
-                    g.setColor(FrameMain.getColor(FrameMain.getPatternNum()));
+                    Color c = FrameMain.getColor(FrameMain.getPatternNum());
+                    g.setColor(c);
                     g.fillRect(gap+x*squareGap, 30+y*squareGap, squareSize, squareSize);
-                    g.setColor(Color.BLACK);
+                    
+                    g.setColor((c.getRed() + c.getGreen() + c.getBlue()) > 150 ? Color.BLACK : Color.WHITE);
                     g.drawRect(gap+x*squareGap, 30+y*squareGap, squareSize, squareSize);
             }
         }
-/*
-        for (int y = n-1; y >= 0; y--) {
-            for (int x = n-1; x >= 0; x--) {
-                counter = clamp(counter, 0, FrameMain.getRepeatNumber(0));
-                if (y < 6 || y > 13) {
-                    g.setColor(y <= 7 ? FrameMain.getNewColor() :
-                            FrameMain.getOldColor());
-                    g.fillRect(gap+x*squareGap, y*squareGap, squareSize, squareSize);
-                    g.setColor(Color.BLACK);
-                    g.drawRect(gap+x*squareGap, y*squareGap, squareSize, squareSize);
-                } else {
-                    g.setColor(pattern[counter] ? FrameMain.getNewColor() :
-                            FrameMain.getOldColor());
-                    
-                    g.fillRect(gap+x*squareGap, y*squareGap, squareSize, squareSize);
-                    g.setColor(Color.BLACK);
-                    g.drawRect(gap+x*squareGap, y*squareGap, squareSize, squareSize);
-                    
-                    if (x == 0)
-                        counter -= (FrameMain.getPegNumber()-n+1);
-                    else counter--;
-                }
-            }
-        }*/
     }
     public void setUp() {
         for (Component c: getComponents())
