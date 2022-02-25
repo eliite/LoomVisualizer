@@ -6,7 +6,10 @@
 package main;
 import java.awt.Color;
 import java.awt.Point;
+import javax.swing.SpinnerNumberModel;
 import regex.CustomFilter;
+
+import com.formdev.flatlaf.FlatDarkLaf;
 
 import javax.swing.UIManager;
 
@@ -16,22 +19,36 @@ import javax.swing.UIManager;
  */
 public class FrameMain extends javax.swing.JFrame {
 
-    static Color oldColor, newColor;
-    static int pegNumber, repeatNumber;
-    static String pattern;
+    static Color color[];
+    static int pegNumber, repeatNumber[], rowNumber[];
+    static private String pattern[];
     
     private CustomFilter[] cf = new CustomFilter[3];
     
     public FrameMain() {
+        FlatDarkLaf.setup();
         initComponents();
         
         cf[0] = new CustomFilter("[0-9]+",3);
-        cf[1] = new CustomFilter("[0-9]+", 3);
-        cf[2] = new CustomFilter("[ON]+", 3);
+        cf[2] = new CustomFilter("[ON]+", 10);
         
+        pattern = new String[4];
+        color = new Color[4+1];
+        repeatNumber = new int[4];
+        rowNumber = new int[4];
+        
+        for (int i = 0; i < 4+1; i++) {
+            if (i < 4) {
+                pattern[i] = "";
+                repeatNumber[i] = 0;
+                rowNumber[i] = 0;
+            }
+            color[i] = new Color(i*i*4, i*i*8, i*50);
+        }
+        
+        sizeSpinner.setValue(1);
         pegTextField = cf[0].adjustField(pegTextField);
-        repeatTextField = cf[1].adjustField(repeatTextField);
-        patternTextField = cf[2].adjustField(patternTextField);
+        patternNumTextField = cf[2].adjustField(patternNumTextField);
     }
 
     /**
@@ -47,17 +64,25 @@ public class FrameMain extends javax.swing.JFrame {
         infoLabel = new javax.swing.JLabel();
         label1 = new javax.swing.JLabel();
         label2 = new javax.swing.JLabel();
-        label3 = new javax.swing.JLabel();
-        label4 = new javax.swing.JLabel();
         label5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         exitButton = new javax.swing.JButton();
-        FrameOldColor = new javax.swing.JFrame();
-        oldColorChooser = new javax.swing.JColorChooser();
+        jLabel9 = new javax.swing.JLabel();
+        FrameColor1 = new javax.swing.JFrame();
+        colorChooser1 = new javax.swing.JColorChooser();
         oldColorLabel1 = new javax.swing.JLabel();
-        FrameNewColor = new javax.swing.JFrame();
-        newColorChooser = new javax.swing.JColorChooser();
+        FrameColor2 = new javax.swing.JFrame();
+        colorChooser2 = new javax.swing.JColorChooser();
         newColorLabel1 = new javax.swing.JLabel();
+        FrameColor3 = new javax.swing.JFrame();
+        colorChooser3 = new javax.swing.JColorChooser();
+        newColorLabel3 = new javax.swing.JLabel();
+        FrameColor4 = new javax.swing.JFrame();
+        colorChooser4 = new javax.swing.JColorChooser();
+        newColorLabel4 = new javax.swing.JLabel();
+        FrameColor5 = new javax.swing.JFrame();
+        colorChooser5 = new javax.swing.JColorChooser();
+        newColorLabel5 = new javax.swing.JLabel();
         FrameVisual = new javax.swing.JFrame();
         PanelVisual = new DrawPanel();
         mainLabel2 = new javax.swing.JLabel();
@@ -69,6 +94,7 @@ public class FrameMain extends javax.swing.JFrame {
         mainLabel4 = new javax.swing.JLabel();
         warningLabel2 = new javax.swing.JLabel();
         exitButton2 = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
         warningDialog3 = new javax.swing.JDialog();
         mainLabel5 = new javax.swing.JLabel();
         warningLabel3 = new javax.swing.JLabel();
@@ -81,19 +107,55 @@ public class FrameMain extends javax.swing.JFrame {
         mainLabel7 = new javax.swing.JLabel();
         warningLabel5 = new javax.swing.JLabel();
         exitButton5 = new javax.swing.JButton();
+        FramePattern1 = new javax.swing.JFrame();
+        jLabel2 = new javax.swing.JLabel();
+        patternTextField1 = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        oldColorLabel2 = new javax.swing.JLabel();
+        oldColorButton = new javax.swing.JButton();
+        newColorLabel2 = new javax.swing.JLabel();
+        newColorButton = new javax.swing.JButton();
+        FramePattern2 = new javax.swing.JFrame();
+        jLabel5 = new javax.swing.JLabel();
+        patternTextField2 = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        oldColorLabel3 = new javax.swing.JLabel();
+        oldColorButton1 = new javax.swing.JButton();
+        newColorLabel6 = new javax.swing.JLabel();
+        newColorButton1 = new javax.swing.JButton();
+        patternLabel2 = new javax.swing.JLabel();
+        patternTextField3 = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        color3Button = new javax.swing.JButton();
+        FrameKey = new javax.swing.JFrame();
+        mainLabel9 = new javax.swing.JLabel();
+        pattern11Label = new javax.swing.JLabel();
+        pattern21Label = new javax.swing.JLabel();
+        pattern31Label = new javax.swing.JLabel();
+        pattern41Label = new javax.swing.JLabel();
+        pattern12Label = new javax.swing.JLabel();
+        pattern22Label = new javax.swing.JLabel();
+        pattern32Label = new javax.swing.JLabel();
+        pattern42Label = new javax.swing.JLabel();
+        color1Label = new javax.swing.JLabel();
+        color2Label = new javax.swing.JLabel();
+        color3Label = new javax.swing.JLabel();
+        color4Label = new javax.swing.JLabel();
+        color5Label = new javax.swing.JLabel();
         mainLabel = new javax.swing.JLabel();
         pegLabel = new javax.swing.JLabel();
         pegTextField = new javax.swing.JTextField();
-        repeatLabel = new javax.swing.JLabel();
-        repeatTextField = new javax.swing.JTextField();
-        patternTextField = new javax.swing.JTextField();
-        patternLabel = new javax.swing.JLabel();
         infoButton = new javax.swing.JButton();
         drawButton = new javax.swing.JButton();
-        oldColorLabel = new javax.swing.JLabel();
-        oldColorButton = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        newColorButton = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        patternComboBox = new javax.swing.JComboBox<>();
+        patternLabel1 = new javax.swing.JLabel();
+        patternNumComboBox = new javax.swing.JComboBox<>();
+        patternNumTextField = new javax.swing.JTextField();
+        colorLabel1 = new javax.swing.JLabel();
+        colorComboBox = new javax.swing.JComboBox<>();
+        colorSelectButton = new javax.swing.JButton();
+        sizeSpinner = new javax.swing.JSpinner();
 
         FrameInfo.setLocation(new java.awt.Point(0, 0));
         FrameInfo.setMinimumSize(new java.awt.Dimension(387, 170));
@@ -109,11 +171,6 @@ public class FrameMain extends javax.swing.JFrame {
 
         label2.setText("The number of pegs on the loom");
 
-        label3.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        label3.setText("Repeat Number:");
-
-        label4.setText("The number of times the pattern repeats");
-
         label5.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         label5.setText("Pattern:");
 
@@ -126,34 +183,39 @@ public class FrameMain extends javax.swing.JFrame {
             }
         });
 
+        jLabel9.setText("NOTE: Patterns are counted upwards (Pattern 1 is bottom)");
+
         javax.swing.GroupLayout FrameInfoLayout = new javax.swing.GroupLayout(FrameInfo.getContentPane());
         FrameInfo.getContentPane().setLayout(FrameInfoLayout);
         FrameInfoLayout.setHorizontalGroup(
             FrameInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(FrameInfoLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(FrameInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(infoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(FrameInfoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(FrameInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(infoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(FrameInfoLayout.createSequentialGroup()
+                                .addGroup(FrameInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(FrameInfoLayout.createSequentialGroup()
+                                        .addComponent(label1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(label2))
+                                    .addGroup(FrameInfoLayout.createSequentialGroup()
+                                        .addComponent(label5)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jLabel1)))
+                                .addGap(0, 10, Short.MAX_VALUE))))
                     .addGroup(FrameInfoLayout.createSequentialGroup()
                         .addGroup(FrameInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(FrameInfoLayout.createSequentialGroup()
-                                .addComponent(label1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(label2))
+                                .addGap(155, 155, 155)
+                                .addComponent(exitButton))
                             .addGroup(FrameInfoLayout.createSequentialGroup()
-                                .addComponent(label3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(label4))
-                            .addGroup(FrameInfoLayout.createSequentialGroup()
-                                .addComponent(label5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel1)))
+                                .addContainerGap()
+                                .addComponent(jLabel9)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(FrameInfoLayout.createSequentialGroup()
-                .addGap(155, 155, 155)
-                .addComponent(exitButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         FrameInfoLayout.setVerticalGroup(
             FrameInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -166,73 +228,154 @@ public class FrameMain extends javax.swing.JFrame {
                     .addComponent(label2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(FrameInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(label3)
-                    .addComponent(label4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(FrameInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(label5)
                     .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(exitButton)
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
-        FrameOldColor.setMinimumSize(new java.awt.Dimension(686, 465));
-        FrameOldColor.setResizable(false);
-        FrameOldColor.setSize(new java.awt.Dimension(686, 465));
+        FrameColor1.setMinimumSize(new java.awt.Dimension(686, 465));
+        FrameColor1.setResizable(false);
+        FrameColor1.setSize(new java.awt.Dimension(686, 465));
 
         oldColorLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 36)); // NOI18N
         oldColorLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        oldColorLabel1.setText("Select Old Color");
+        oldColorLabel1.setText("Select Color 1");
 
-        javax.swing.GroupLayout FrameOldColorLayout = new javax.swing.GroupLayout(FrameOldColor.getContentPane());
-        FrameOldColor.getContentPane().setLayout(FrameOldColorLayout);
-        FrameOldColorLayout.setHorizontalGroup(
-            FrameOldColorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(FrameOldColorLayout.createSequentialGroup()
-                .addComponent(oldColorChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        javax.swing.GroupLayout FrameColor1Layout = new javax.swing.GroupLayout(FrameColor1.getContentPane());
+        FrameColor1.getContentPane().setLayout(FrameColor1Layout);
+        FrameColor1Layout.setHorizontalGroup(
+            FrameColor1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FrameColor1Layout.createSequentialGroup()
+                .addComponent(colorChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FrameOldColorLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FrameColor1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(oldColorLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        FrameOldColorLayout.setVerticalGroup(
-            FrameOldColorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FrameOldColorLayout.createSequentialGroup()
+        FrameColor1Layout.setVerticalGroup(
+            FrameColor1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FrameColor1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(oldColorLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(oldColorChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(colorChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        FrameNewColor.setMinimumSize(new java.awt.Dimension(686, 465));
-        FrameNewColor.setPreferredSize(new java.awt.Dimension(686, 465));
-        FrameNewColor.setResizable(false);
+        FrameColor2.setMinimumSize(new java.awt.Dimension(686, 465));
+        FrameColor2.setResizable(false);
 
         newColorLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 36)); // NOI18N
         newColorLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        newColorLabel1.setText("Select New Color");
+        newColorLabel1.setText("Select Color 2");
 
-        javax.swing.GroupLayout FrameNewColorLayout = new javax.swing.GroupLayout(FrameNewColor.getContentPane());
-        FrameNewColor.getContentPane().setLayout(FrameNewColorLayout);
-        FrameNewColorLayout.setHorizontalGroup(
-            FrameNewColorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(FrameNewColorLayout.createSequentialGroup()
-                .addComponent(newColorChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        javax.swing.GroupLayout FrameColor2Layout = new javax.swing.GroupLayout(FrameColor2.getContentPane());
+        FrameColor2.getContentPane().setLayout(FrameColor2Layout);
+        FrameColor2Layout.setHorizontalGroup(
+            FrameColor2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FrameColor2Layout.createSequentialGroup()
+                .addComponent(colorChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FrameNewColorLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FrameColor2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(newColorLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        FrameNewColorLayout.setVerticalGroup(
-            FrameNewColorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FrameNewColorLayout.createSequentialGroup()
+        FrameColor2Layout.setVerticalGroup(
+            FrameColor2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FrameColor2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(newColorLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(newColorChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(colorChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        FrameColor3.setMinimumSize(new java.awt.Dimension(686, 465));
+        FrameColor3.setResizable(false);
+
+        newColorLabel3.setFont(new java.awt.Font("Lucida Grande", 1, 36)); // NOI18N
+        newColorLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        newColorLabel3.setText("Select Color 3");
+
+        javax.swing.GroupLayout FrameColor3Layout = new javax.swing.GroupLayout(FrameColor3.getContentPane());
+        FrameColor3.getContentPane().setLayout(FrameColor3Layout);
+        FrameColor3Layout.setHorizontalGroup(
+            FrameColor3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FrameColor3Layout.createSequentialGroup()
+                .addComponent(colorChooser3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FrameColor3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(newColorLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        FrameColor3Layout.setVerticalGroup(
+            FrameColor3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FrameColor3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(newColorLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(colorChooser3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        FrameColor4.setMinimumSize(new java.awt.Dimension(686, 465));
+        FrameColor4.setResizable(false);
+
+        newColorLabel4.setFont(new java.awt.Font("Lucida Grande", 1, 36)); // NOI18N
+        newColorLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        newColorLabel4.setText("Select Color 4");
+
+        javax.swing.GroupLayout FrameColor4Layout = new javax.swing.GroupLayout(FrameColor4.getContentPane());
+        FrameColor4.getContentPane().setLayout(FrameColor4Layout);
+        FrameColor4Layout.setHorizontalGroup(
+            FrameColor4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FrameColor4Layout.createSequentialGroup()
+                .addComponent(colorChooser4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FrameColor4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(newColorLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        FrameColor4Layout.setVerticalGroup(
+            FrameColor4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FrameColor4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(newColorLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(colorChooser4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        FrameColor5.setMinimumSize(new java.awt.Dimension(686, 465));
+        FrameColor5.setResizable(false);
+
+        newColorLabel5.setFont(new java.awt.Font("Lucida Grande", 1, 36)); // NOI18N
+        newColorLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        newColorLabel5.setText("Select Color 5");
+
+        javax.swing.GroupLayout FrameColor5Layout = new javax.swing.GroupLayout(FrameColor5.getContentPane());
+        FrameColor5.getContentPane().setLayout(FrameColor5Layout);
+        FrameColor5Layout.setHorizontalGroup(
+            FrameColor5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FrameColor5Layout.createSequentialGroup()
+                .addComponent(colorChooser5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FrameColor5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(newColorLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        FrameColor5Layout.setVerticalGroup(
+            FrameColor5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FrameColor5Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(newColorLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(colorChooser5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         FrameVisual.setMinimumSize(new java.awt.Dimension(612, 687));
@@ -250,7 +393,7 @@ public class FrameMain extends javax.swing.JFrame {
         );
         PanelVisualLayout.setVerticalGroup(
             PanelVisualLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGap(0, 626, Short.MAX_VALUE)
         );
 
         mainLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 36)); // NOI18N
@@ -274,8 +417,8 @@ public class FrameMain extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(mainLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(PanelVisual, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(32, 32, 32))
+                .addComponent(PanelVisual, javax.swing.GroupLayout.DEFAULT_SIZE, 626, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         warningDialog1.setMinimumSize(new java.awt.Dimension(285, 135));
@@ -331,7 +474,7 @@ public class FrameMain extends javax.swing.JFrame {
         mainLabel4.setText("Warning");
 
         warningLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        warningLabel2.setText("Please enter the frequency of repeating.");
+        warningLabel2.setText("Patterns cannot take up more than");
 
         exitButton2.setText("OK");
         exitButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -340,29 +483,39 @@ public class FrameMain extends javax.swing.JFrame {
             }
         });
 
+        jLabel8.setText("18 rows");
+
         javax.swing.GroupLayout warningDialog2Layout = new javax.swing.GroupLayout(warningDialog2.getContentPane());
         warningDialog2.getContentPane().setLayout(warningDialog2Layout);
         warningDialog2Layout.setHorizontalGroup(
             warningDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(warningDialog2Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(warningDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(mainLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(warningLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(warningDialog2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(warningDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(mainLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(warningLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)))
+                    .addGroup(warningDialog2Layout.createSequentialGroup()
+                        .addGap(75, 75, 75)
+                        .addComponent(exitButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, warningDialog2Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(exitButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(92, 92, 92))
+            .addGroup(warningDialog2Layout.createSequentialGroup()
+                .addGap(99, 99, 99)
+                .addComponent(jLabel8)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         warningDialog2Layout.setVerticalGroup(
             warningDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(warningDialog2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(mainLabel4)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(warningLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(2, 2, 2)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(exitButton2)
                 .addContainerGap(24, Short.MAX_VALUE))
         );
@@ -502,8 +655,261 @@ public class FrameMain extends javax.swing.JFrame {
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
+        FramePattern1.setMinimumSize(new java.awt.Dimension(209, 144));
+        FramePattern1.setSize(new java.awt.Dimension(209, 144));
+
+        jLabel2.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Patterns");
+
+        jLabel4.setText("Pattern");
+
+        oldColorLabel2.setText("Old Color");
+
+        oldColorButton.setText("Select");
+
+        newColorLabel2.setText("New Color");
+
+        newColorButton.setText("Select");
+        newColorButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newColorButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout FramePattern1Layout = new javax.swing.GroupLayout(FramePattern1.getContentPane());
+        FramePattern1.getContentPane().setLayout(FramePattern1Layout);
+        FramePattern1Layout.setHorizontalGroup(
+            FramePattern1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FramePattern1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(FramePattern1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FramePattern1Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(18, 18, 18)
+                        .addComponent(patternTextField1))
+                    .addGroup(FramePattern1Layout.createSequentialGroup()
+                        .addGroup(FramePattern1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(oldColorLabel2)
+                            .addComponent(newColorLabel2))
+                        .addGap(18, 18, 18)
+                        .addGroup(FramePattern1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(newColorButton)
+                            .addComponent(oldColorButton))
+                        .addGap(0, 33, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        FramePattern1Layout.setVerticalGroup(
+            FramePattern1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FramePattern1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(FramePattern1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(patternTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(FramePattern1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(oldColorLabel2)
+                    .addComponent(oldColorButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(FramePattern1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(newColorLabel2)
+                    .addComponent(newColorButton)))
+        );
+
+        FramePattern2.setMinimumSize(new java.awt.Dimension(209, 144));
+        FramePattern2.setSize(new java.awt.Dimension(209, 144));
+
+        jLabel5.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Patterns");
+
+        jLabel6.setText("Pattern 1");
+
+        oldColorLabel3.setText("Color 1");
+
+        oldColorButton1.setText("Select");
+
+        newColorLabel6.setText("Color 2");
+
+        newColorButton1.setText("Select");
+        newColorButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newColorButton1ActionPerformed(evt);
+            }
+        });
+
+        patternLabel2.setText("Pattern 2");
+
+        jLabel7.setText("Color 3");
+
+        color3Button.setText("Select");
+
+        javax.swing.GroupLayout FramePattern2Layout = new javax.swing.GroupLayout(FramePattern2.getContentPane());
+        FramePattern2.getContentPane().setLayout(FramePattern2Layout);
+        FramePattern2Layout.setHorizontalGroup(
+            FramePattern2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FramePattern2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(FramePattern2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FramePattern2Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addGap(18, 18, 18)
+                        .addComponent(patternTextField2))
+                    .addGroup(FramePattern2Layout.createSequentialGroup()
+                        .addComponent(patternLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(patternTextField3))
+                    .addGroup(FramePattern2Layout.createSequentialGroup()
+                        .addGroup(FramePattern2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(oldColorLabel3)
+                            .addComponent(newColorLabel6)
+                            .addComponent(jLabel7))
+                        .addGap(18, 18, 18)
+                        .addGroup(FramePattern2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(newColorButton1)
+                            .addComponent(oldColorButton1)
+                            .addComponent(color3Button))
+                        .addGap(0, 52, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        FramePattern2Layout.setVerticalGroup(
+            FramePattern2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FramePattern2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(FramePattern2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(patternTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(FramePattern2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(patternLabel2)
+                    .addComponent(patternTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(FramePattern2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(oldColorLabel3)
+                    .addComponent(oldColorButton1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(FramePattern2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(newColorLabel6)
+                    .addComponent(newColorButton1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(FramePattern2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(color3Button))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        FrameKey.setMinimumSize(new java.awt.Dimension(153, 300));
+        FrameKey.setSize(new java.awt.Dimension(153, 300));
+
+        mainLabel9.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        mainLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        mainLabel9.setText("Key");
+
+        pattern11Label.setText("Pattern 1:");
+
+        pattern21Label.setText("Pattern 2:");
+
+        pattern31Label.setText("Pattern 3:");
+
+        pattern41Label.setText("Pattern 4:");
+
+        pattern12Label.setText("N/A");
+
+        pattern22Label.setText("N/A");
+
+        pattern32Label.setText("N/A");
+
+        pattern42Label.setText("N/A");
+
+        color1Label.setText("Color 1");
+
+        color2Label.setText("Color 2");
+
+        color3Label.setText("Color 3");
+
+        color4Label.setText("Color 4");
+
+        color5Label.setText("Color 5");
+
+        javax.swing.GroupLayout FrameKeyLayout = new javax.swing.GroupLayout(FrameKey.getContentPane());
+        FrameKey.getContentPane().setLayout(FrameKeyLayout);
+        FrameKeyLayout.setHorizontalGroup(
+            FrameKeyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FrameKeyLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(FrameKeyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(mainLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(FrameKeyLayout.createSequentialGroup()
+                        .addGroup(FrameKeyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(FrameKeyLayout.createSequentialGroup()
+                                .addComponent(pattern11Label)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(pattern12Label))
+                            .addGroup(FrameKeyLayout.createSequentialGroup()
+                                .addComponent(pattern21Label)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(pattern22Label))
+                            .addGroup(FrameKeyLayout.createSequentialGroup()
+                                .addComponent(pattern31Label)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(pattern32Label))
+                            .addGroup(FrameKeyLayout.createSequentialGroup()
+                                .addComponent(pattern41Label)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(pattern42Label))
+                            .addComponent(color1Label)
+                            .addComponent(color2Label)
+                            .addComponent(color3Label)
+                            .addComponent(color4Label)
+                            .addComponent(color5Label))
+                        .addGap(0, 49, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        FrameKeyLayout.setVerticalGroup(
+            FrameKeyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FrameKeyLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(mainLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(FrameKeyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(pattern11Label)
+                    .addComponent(pattern12Label))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(FrameKeyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(pattern21Label)
+                    .addComponent(pattern22Label))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(FrameKeyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(pattern31Label)
+                    .addComponent(pattern32Label))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(FrameKeyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(pattern41Label)
+                    .addComponent(pattern42Label))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(color1Label)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(color2Label)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(color3Label)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(color4Label)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(color5Label)
+                .addContainerGap(60, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(252, 211));
+        setMinimumSize(new java.awt.Dimension(252, 211));
         setResizable(false);
+        setSize(new java.awt.Dimension(252, 211));
 
         mainLabel.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
         mainLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -514,21 +920,6 @@ public class FrameMain extends javax.swing.JFrame {
 
         pegTextField.setToolTipText("How many pegs are on the loom?");
         pegTextField.setMaximumSize(new java.awt.Dimension(11, 26));
-
-        repeatLabel.setText("Repeat Number");
-
-        repeatTextField.setToolTipText("How often does the pattern repeat?");
-        repeatTextField.setMaximumSize(new java.awt.Dimension(11, 26));
-        repeatTextField.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                repeatTextFieldFocusLost(evt);
-            }
-        });
-
-        patternTextField.setToolTipText("Example: ONNON");
-        patternTextField.setMaximumSize(new java.awt.Dimension(11, 26));
-
-        patternLabel.setText("Pattern");
 
         infoButton.setText("Info");
         infoButton.addActionListener(new java.awt.event.ActionListener() {
@@ -544,23 +935,69 @@ public class FrameMain extends javax.swing.JFrame {
             }
         });
 
-        oldColorLabel.setText("Old Color");
+        jLabel3.setText("Number of Patterns");
 
-        oldColorButton.setText("Select");
-        oldColorButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                oldColorButtonActionPerformed(evt);
+        patternComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        patternComboBox.setToolTipText("Dropdown to select the number of patterns");
+        patternComboBox.removeAllItems();
+        for (int i = 1; i <= 4; i++)
+        patternComboBox.addItem(""+i);
+        patternComboBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                patternComboBoxItemStateChanged(evt);
+            }
+        });
+        patternComboBox.setSelectedIndex(3);
+
+        patternLabel1.setText("Pattern");
+
+        patternNumComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        patternNumComboBox.setToolTipText("Select the pattern you are editing (ex. 4 = 4th pattern)");
+        patternNumComboBox.removeAllItems();
+        for (int i = 1; i <= 4; i++)
+        patternNumComboBox.addItem(""+i);
+        patternNumComboBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                patternNumComboBoxItemStateChanged(evt);
             }
         });
 
-        jLabel2.setText("New Color");
-
-        newColorButton.setText("Select");
-        newColorButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                newColorButtonActionPerformed(evt);
+        patternNumTextField.setToolTipText("Enter a pattern (ex. OONNOO)");
+        patternNumTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                patternNumTextFieldFocusLost(evt);
             }
         });
+        patternNumTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                patternNumTextFieldKeyTyped(evt);
+            }
+        });
+
+        colorLabel1.setText("Color");
+
+        colorComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        colorComboBox.setToolTipText("Select the color you are using (ex. 4 = 4th color)");
+        colorComboBox.removeAllItems();
+        for (int i = 1; i <= 4+1; i++)
+        colorComboBox.addItem(""+i);
+
+        colorSelectButton.setText("Select");
+        colorSelectButton.setToolTipText("Select a color via colorpicker.");
+        colorSelectButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                colorSelectButtonActionPerformed(evt);
+            }
+        });
+
+        sizeSpinner.setToolTipText("Size in rows");
+        sizeSpinner.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sizeSpinnerStateChanged(evt);
+            }
+        });
+        SpinnerNumberModel model = new SpinnerNumberModel(1, 1, 9, 1);
+        sizeSpinner.setModel(model);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -569,34 +1006,37 @@ public class FrameMain extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(mainLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
+                    .addComponent(mainLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(pegLabel)
                         .addGap(12, 12, 12)
                         .addComponent(pegTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(patternComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(repeatLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(patternLabel)
-                                    .addComponent(oldColorLabel))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(infoButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(8, 8, 8))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(patternLabel1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(colorLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGap(4, 4, 4)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(patternNumComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(colorComboBox, 0, 1, Short.MAX_VALUE)))
+                            .addComponent(infoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(12, 12, 12)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(drawButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(oldColorButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(newColorButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(4, 4, 4)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(repeatTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(patternTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                                .addComponent(patternNumTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(sizeSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(colorSelectButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -610,25 +1050,24 @@ public class FrameMain extends javax.swing.JFrame {
                     .addComponent(pegTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(repeatLabel)
-                    .addComponent(repeatTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel3)
+                    .addComponent(patternComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(patternTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(patternLabel))
+                    .addComponent(patternLabel1)
+                    .addComponent(patternNumComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(patternNumTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sizeSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(oldColorLabel)
-                    .addComponent(oldColorButton))
+                    .addComponent(colorLabel1)
+                    .addComponent(colorComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(colorSelectButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(newColorButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(infoButton)
                     .addComponent(drawButton))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -641,35 +1080,47 @@ public class FrameMain extends javax.swing.JFrame {
             warningDialog1.setLocation(new Point(this.getLocation().x,
             this.getLocation().y+this.getHeight()));
             warningDialog1.setVisible(true);
-        } else if (repeatTextField.getText().isBlank()) {
+        } else if ((rowNumber[0] + rowNumber[1] + rowNumber[2] + rowNumber[3]) > 17) {
             warningDialog2.setLocation(new Point(this.getLocation().x,
             this.getLocation().y+this.getHeight()));
             warningDialog2.setVisible(true);
-        } else if (Integer.parseInt(repeatTextField.getText()) < 2) {
-            warningDialog3.setLocation(new Point(this.getLocation().x,
-            this.getLocation().y+this.getHeight()));
-            warningDialog3.setVisible(true);
-        } else if (patternTextField.getText().isBlank()) {
-            warningDialog4.setLocation(new Point(this.getLocation().x,
-            this.getLocation().y+this.getHeight()));
-            warningDialog4.setVisible(true);
-        } else if (patternTextField.getText().length() != 
-                Integer.parseInt(repeatTextField.getText())) {
-            warningDialog5.setLocation(new Point(this.getLocation().x,
-            this.getLocation().y+this.getHeight()));
-            warningDialog5.setVisible(true);
-        } else {
+        }
+        else {
             pegNumber = Integer.parseInt(pegTextField.getText());
-            repeatNumber = Integer.parseInt(repeatTextField.getText());
-            pattern = patternTextField.getText();
+            pattern[patternNumComboBox.getSelectedIndex()] = 
+                    patternNumTextField.getText();
+            
+            for (int i = 0; i < 4; i++)
+                repeatNumber[i] = pattern[i].length();
 
             FrameInfo.setVisible(false);
-            FrameOldColor.setVisible(false);
-            FrameNewColor.setVisible(false);
+            FrameColor1.setVisible(false);
+            FrameColor2.setVisible(false);
+            FrameColor3.setVisible(false);
+            FrameColor4.setVisible(false);
+            FrameColor5.setVisible(false);
             
-            oldColor = oldColorChooser.getColor();
-            newColor = newColorChooser.getColor();
-
+            color[0] = colorChooser1.getColor();
+            color[1] = colorChooser2.getColor();
+            color[2] = colorChooser3.getColor();
+            color[3] = colorChooser4.getColor();
+            color[4] = colorChooser5.getColor();
+            
+            if (!pattern[0].isBlank()) pattern12Label.setText(pattern[0]);
+            if (!pattern[1].isBlank()) pattern22Label.setText(pattern[1]);
+            if (!pattern[2].isBlank()) pattern32Label.setText(pattern[2]);
+            if (!pattern[3].isBlank()) pattern42Label.setText(pattern[3]);
+            
+            color1Label.setForeground(color[0]);
+            color2Label.setForeground(color[1]);
+            color3Label.setForeground(color[2]);
+            color4Label.setForeground(color[3]);
+            color5Label.setForeground(color[4]);
+            
+            FrameKey.setLocation(new Point(this.getLocation().x-FrameKey.getWidth(),
+                    this.getLocation().y));
+            FrameKey.setVisible(true);
+            
             FrameVisual.repaint();
             if (!FrameVisual.isVisible())
                 FrameVisual.setLocation(new Point(this.getLocation().x+this.getWidth(),
@@ -687,23 +1138,6 @@ public class FrameMain extends javax.swing.JFrame {
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
         FrameInfo.setVisible(false);
     }//GEN-LAST:event_exitButtonActionPerformed
-
-    private void oldColorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oldColorButtonActionPerformed
-        FrameOldColor.setVisible(true);
-    }//GEN-LAST:event_oldColorButtonActionPerformed
-
-    private void newColorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newColorButtonActionPerformed
-        FrameNewColor.setVisible(true);
-    }//GEN-LAST:event_newColorButtonActionPerformed
-
-    private void repeatTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_repeatTextFieldFocusLost
-        if (!repeatTextField.getText().isBlank()) {
-            cf[2] = new CustomFilter("[ON]+", 
-                    Integer.parseInt(repeatTextField.getText()));
-
-            patternTextField = cf[2].adjustField(patternTextField);
-        }
-    }//GEN-LAST:event_repeatTextFieldFocusLost
 
     private void exitButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButton1ActionPerformed
         warningDialog1.setVisible(false);
@@ -725,6 +1159,92 @@ public class FrameMain extends javax.swing.JFrame {
         warningDialog4.setVisible(false);
     }//GEN-LAST:event_exitButton4ActionPerformed
 
+    private void newColorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newColorButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_newColorButtonActionPerformed
+
+    private void newColorButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newColorButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_newColorButton1ActionPerformed
+
+    private void patternNumComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_patternNumComboBoxItemStateChanged
+        if (patternNumComboBox.getSelectedIndex() >= 0 && 
+                patternNumComboBox.getSelectedIndex() < 4) {
+            if (pattern[patternNumComboBox.getSelectedIndex()].isBlank() == false)
+                patternNumTextField.setText(pattern[patternNumComboBox.getSelectedIndex()]);
+            else
+                patternNumTextField.setText("");
+            
+            sizeSpinner.setValue((rowNumber[patternNumComboBox.getSelectedIndex()]) == 0 ? 1 : rowNumber[patternNumComboBox.getSelectedIndex()]);
+        }
+    }//GEN-LAST:event_patternNumComboBoxItemStateChanged
+
+    private void colorSelectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_colorSelectButtonActionPerformed
+        switch (colorComboBox.getSelectedIndex()+1) {
+            case 1:
+                FrameColor2.setVisible(false);
+                FrameColor3.setVisible(false);
+                FrameColor4.setVisible(false);
+                FrameColor5.setVisible(false);
+                FrameColor1.setVisible(true);
+                break;
+            case 2:
+                FrameColor1.setVisible(false);
+                FrameColor3.setVisible(false);
+                FrameColor4.setVisible(false);
+                FrameColor5.setVisible(false);
+                FrameColor2.setVisible(true);
+                break;
+            case 3:
+                FrameColor2.setVisible(false);
+                FrameColor1.setVisible(false);
+                FrameColor4.setVisible(false);
+                FrameColor5.setVisible(false);
+                FrameColor3.setVisible(true);
+                break;
+            case 4:
+                FrameColor2.setVisible(false);
+                FrameColor3.setVisible(false);
+                FrameColor1.setVisible(false);
+                FrameColor5.setVisible(false);
+                FrameColor4.setVisible(true);
+                break;
+            case 5:
+                FrameColor2.setVisible(false);
+                FrameColor3.setVisible(false);
+                FrameColor4.setVisible(false);
+                FrameColor1.setVisible(false);
+                FrameColor5.setVisible(true);
+                break;
+        }
+    }//GEN-LAST:event_colorSelectButtonActionPerformed
+
+    private void patternComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_patternComboBoxItemStateChanged
+        patternNumComboBox.removeAllItems();
+        colorComboBox.removeAllItems();
+        
+        for (int i = 1; i <= patternComboBox.getSelectedIndex()+2; i++) {
+            if (i <= patternComboBox.getSelectedIndex()+1)
+                patternNumComboBox.addItem(""+i);
+            
+            colorComboBox.addItem(""+i);
+        }
+        
+        patternNumComboBox.setSelectedIndex(0);
+    }//GEN-LAST:event_patternComboBoxItemStateChanged
+
+    private void patternNumTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_patternNumTextFieldKeyTyped
+        pattern[patternNumComboBox.getSelectedIndex()] = patternNumTextField.getText();
+    }//GEN-LAST:event_patternNumTextFieldKeyTyped
+
+    private void patternNumTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_patternNumTextFieldFocusLost
+        pattern[patternNumComboBox.getSelectedIndex()] = patternNumTextField.getText();
+    }//GEN-LAST:event_patternNumTextFieldFocusLost
+
+    private void sizeSpinnerStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sizeSpinnerStateChanged
+        rowNumber[patternNumComboBox.getSelectedIndex()] = Integer.parseInt(sizeSpinner.getValue().toString());
+    }//GEN-LAST:event_sizeSpinnerStateChanged
+
     /**
      * @param args the command line arguments
      */
@@ -735,15 +1255,9 @@ public class FrameMain extends javax.swing.JFrame {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
-            UIManager.setLookAndFeel("com.apple.laf.AquaLookAndFeel");
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrameMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrameMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrameMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrameMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            UIManager.setLookAndFeel(new FlatDarkLaf());
+        } catch (Exception ex) {
+            System.out.println("Failed to initialize LaF");
         }
         //</editor-fold>
 
@@ -755,32 +1269,58 @@ public class FrameMain extends javax.swing.JFrame {
         });
     }
     
-    static Color getOldColor() {
-        return oldColor;
-    }
-    
-    static Color getNewColor() {
-        return newColor;
+    static Color getColor(int i) {
+        return color[i];
     }
     
     static int getPegNumber() {
         return pegNumber;
     }
     
-    static int getRepeatNumber() {
-        return repeatNumber;
+    static int getPatternNum() {
+        return patternComboBox.getSelectedIndex()+1;
     }
     
-    static String getPattern() {
-        return pattern;
+    static int getRowNumber(int i) {
+        if (i < 0 || i > 3) return -1;
+        return rowNumber[i];
+    }
+            
+    static int getRepeatNumber(int i) {
+        if (i < 0 || i > 3) return -1;
+        return repeatNumber[i];
+    }
+    
+    static String getPattern(int i) {
+        return pattern[i];
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JFrame FrameColor1;
+    private javax.swing.JFrame FrameColor2;
+    private javax.swing.JFrame FrameColor3;
+    private javax.swing.JFrame FrameColor4;
+    private javax.swing.JFrame FrameColor5;
     private javax.swing.JFrame FrameInfo;
-    private javax.swing.JFrame FrameNewColor;
-    private javax.swing.JFrame FrameOldColor;
+    private javax.swing.JFrame FrameKey;
+    private javax.swing.JFrame FramePattern1;
+    private javax.swing.JFrame FramePattern2;
     private javax.swing.JFrame FrameVisual;
     private javax.swing.JPanel PanelVisual;
+    private javax.swing.JLabel color1Label;
+    private javax.swing.JLabel color2Label;
+    private javax.swing.JButton color3Button;
+    private javax.swing.JLabel color3Label;
+    private javax.swing.JLabel color4Label;
+    private javax.swing.JLabel color5Label;
+    private javax.swing.JColorChooser colorChooser1;
+    private javax.swing.JColorChooser colorChooser2;
+    private javax.swing.JColorChooser colorChooser3;
+    private javax.swing.JColorChooser colorChooser4;
+    private javax.swing.JColorChooser colorChooser5;
+    private javax.swing.JComboBox<String> colorComboBox;
+    private javax.swing.JLabel colorLabel1;
+    private javax.swing.JButton colorSelectButton;
     private javax.swing.JButton drawButton;
     private javax.swing.JButton exitButton;
     private javax.swing.JButton exitButton1;
@@ -792,10 +1332,15 @@ public class FrameMain extends javax.swing.JFrame {
     private javax.swing.JLabel infoLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel label1;
     private javax.swing.JLabel label2;
-    private javax.swing.JLabel label3;
-    private javax.swing.JLabel label4;
     private javax.swing.JLabel label5;
     private javax.swing.JLabel mainLabel;
     private javax.swing.JLabel mainLabel2;
@@ -804,19 +1349,39 @@ public class FrameMain extends javax.swing.JFrame {
     private javax.swing.JLabel mainLabel5;
     private javax.swing.JLabel mainLabel6;
     private javax.swing.JLabel mainLabel7;
+    private javax.swing.JLabel mainLabel9;
     private javax.swing.JButton newColorButton;
-    private javax.swing.JColorChooser newColorChooser;
+    private javax.swing.JButton newColorButton1;
     private javax.swing.JLabel newColorLabel1;
+    private javax.swing.JLabel newColorLabel2;
+    private javax.swing.JLabel newColorLabel3;
+    private javax.swing.JLabel newColorLabel4;
+    private javax.swing.JLabel newColorLabel5;
+    private javax.swing.JLabel newColorLabel6;
     private javax.swing.JButton oldColorButton;
-    private javax.swing.JColorChooser oldColorChooser;
-    private javax.swing.JLabel oldColorLabel;
+    private javax.swing.JButton oldColorButton1;
     private javax.swing.JLabel oldColorLabel1;
-    private javax.swing.JLabel patternLabel;
-    private javax.swing.JTextField patternTextField;
+    private javax.swing.JLabel oldColorLabel2;
+    private javax.swing.JLabel oldColorLabel3;
+    private javax.swing.JLabel pattern11Label;
+    private javax.swing.JLabel pattern12Label;
+    private javax.swing.JLabel pattern21Label;
+    private javax.swing.JLabel pattern22Label;
+    private javax.swing.JLabel pattern31Label;
+    private javax.swing.JLabel pattern32Label;
+    private javax.swing.JLabel pattern41Label;
+    private javax.swing.JLabel pattern42Label;
+    private static javax.swing.JComboBox<String> patternComboBox;
+    private javax.swing.JLabel patternLabel1;
+    private javax.swing.JLabel patternLabel2;
+    private javax.swing.JComboBox<String> patternNumComboBox;
+    private javax.swing.JTextField patternNumTextField;
+    private javax.swing.JTextField patternTextField1;
+    private javax.swing.JTextField patternTextField2;
+    private javax.swing.JTextField patternTextField3;
     private javax.swing.JLabel pegLabel;
     private javax.swing.JTextField pegTextField;
-    private javax.swing.JLabel repeatLabel;
-    private javax.swing.JTextField repeatTextField;
+    private javax.swing.JSpinner sizeSpinner;
     private javax.swing.JDialog warningDialog1;
     private javax.swing.JDialog warningDialog2;
     private javax.swing.JDialog warningDialog3;
