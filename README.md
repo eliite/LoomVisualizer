@@ -57,10 +57,24 @@ Graph of the output of a hat on a loom with 31 pegs and a pattern of length 2 - 
 24 pegs, and a pattern of length 5, represented by "ONNNO"
 ![Example 3](/images/Example4.png)
 
-A hat with four complex patterns, different row sizes, and five different colors:
+##### NOTE: These images are from Version 6 of the program.
+
+A hat with four complex patterns, different row sizes, and five different colors (Version 7):
 ![Example 8](/images/Example8.png)
 
-##### NOTE: These images are from Version 6 of the program.
+## Update
+With increasing complexity to match the demand of hat designs, I published a Version 7 update which added a significant number of new features. For one, the program now prompted the user to select a number of patterns. A user can select between one and four patterns (any more or less would be hard to picture on a hat). Then, the user can select **n+1** colors, where **n** is the number of patterns (4 patterns - 5 colors). This is the highest number of patterns needed for the type of knitting the program was designed for. Additionally, the user can change the number of rows that a pattern applies for. A pattern lasting two rows will transition to the next pattern much differently than the same pattern lasting five rows. With all of these new options, I found it may be difficult to keep track of each changing variable. To counteract this, I added a key which reminds the user of which patterns they selected and which colors they picked.
+
+Along with that, there is now a new user interface. Pictured below are examples of the program's windows.
+
+The Main tab, where all things about the pattern are handled
+![Example 6](/images/Example6.png)
+
+The Visual tab, where the pattern is drawn
+![Example 5](/images/Example5.png)
+
+The Key tab
+![Example 7](/images/Example7.png)
 
 ## Conclusion
 
