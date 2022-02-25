@@ -57,6 +57,11 @@ Graph of the output of a hat on a loom with 31 pegs and a pattern of length 2 - 
 24 pegs, and a pattern of length 5, represented by "ONNNO"
 ![Example 3](/images/Example4.png)
 
+A hat with four complex patterns, different row sizes, and five different colors:
+![Example 8](/images/Example8.png)
+
+##### NOTE: These images are from Version 6 of the program.
+
 ## Conclusion
 
 Ultimately, this program allows a hobbyist to examine an instant graphical representation of a pattern on a staggered round loom. The patterns can be visualized
