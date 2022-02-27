@@ -10,6 +10,8 @@ import javax.swing.SpinnerNumberModel;
 import regex.CustomFilter;
 
 import com.formdev.flatlaf.FlatDarkLaf;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.swing.UIManager;
 
@@ -161,6 +163,7 @@ public class FrameMain extends javax.swing.JFrame {
         sizeSpinner = new javax.swing.JSpinner();
 
         FrameInfo.setLocation(new java.awt.Point(0, 0));
+        FrameInfo.setMaximumSize(new java.awt.Dimension(387, 170));
         FrameInfo.setMinimumSize(new java.awt.Dimension(387, 170));
         FrameInfo.setResizable(false);
         FrameInfo.setSize(new java.awt.Dimension(387, 170));
@@ -237,7 +240,7 @@ public class FrameMain extends javax.swing.JFrame {
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(exitButton)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         FrameColor1.setMinimumSize(new java.awt.Dimension(686, 465));
@@ -850,28 +853,28 @@ public class FrameMain extends javax.swing.JFrame {
                     .addComponent(mainLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(FrameKeyLayout.createSequentialGroup()
                         .addGroup(FrameKeyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(FrameKeyLayout.createSequentialGroup()
-                                .addComponent(pattern11Label)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(pattern12Label))
-                            .addGroup(FrameKeyLayout.createSequentialGroup()
-                                .addComponent(pattern21Label)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(pattern22Label))
-                            .addGroup(FrameKeyLayout.createSequentialGroup()
-                                .addComponent(pattern31Label)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(pattern32Label))
-                            .addGroup(FrameKeyLayout.createSequentialGroup()
-                                .addComponent(pattern41Label)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(pattern42Label))
                             .addComponent(color1Label)
                             .addComponent(color2Label)
                             .addComponent(color3Label)
                             .addComponent(color4Label)
                             .addComponent(color5Label))
-                        .addGap(0, 49, Short.MAX_VALUE)))
+                        .addGap(0, 95, Short.MAX_VALUE))
+                    .addGroup(FrameKeyLayout.createSequentialGroup()
+                        .addComponent(pattern41Label)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(pattern42Label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(FrameKeyLayout.createSequentialGroup()
+                        .addComponent(pattern31Label)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(pattern32Label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(FrameKeyLayout.createSequentialGroup()
+                        .addComponent(pattern21Label)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(pattern22Label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(FrameKeyLayout.createSequentialGroup()
+                        .addComponent(pattern11Label)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(pattern12Label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         FrameKeyLayout.setVerticalGroup(
@@ -1107,6 +1110,22 @@ public class FrameMain extends javax.swing.JFrame {
             FrameColor4.setVisible(false);
             FrameColor5.setVisible(false);
             
+            color1Label.setText("Color 1");
+            color2Label.setText("Color 2");
+            color3Label.setText("Color 3");
+            color4Label.setText("Color 4");
+            color5Label.setText("Color 5");
+            
+            if (getPatternNum() < 4) {
+                color5Label.setText("");
+            } 
+            if (getPatternNum() < 3) {
+                color4Label.setText("");
+            }
+            if (getPatternNum() < 2) {
+                color3Label.setText("");
+            }
+            
             color[0] = colorChooser1.getColor();
             color[1] = colorChooser2.getColor();
             color[2] = colorChooser3.getColor();
@@ -1124,7 +1143,8 @@ public class FrameMain extends javax.swing.JFrame {
             color4Label.setForeground(color[3]);
             color5Label.setForeground(color[4]);
             
-            FrameKey.setLocation(new Point(this.getLocation().x-FrameKey.getWidth(),
+            if (!FrameKey.isVisible())
+                FrameKey.setLocation(new Point(this.getLocation().x-FrameKey.getWidth(),
                     this.getLocation().y));
             FrameKey.setVisible(true);
             

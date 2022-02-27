@@ -74,7 +74,7 @@ public class DrawPanel extends JPanel {
             }
         }
         
-        // first pattern // 15
+        // first pattern
         recent_length -= solid;
         for (int y = recent_length; y > recent_length-FrameMain.getRowNumber(0); y--) {
             for (int x = n-1; x >= 0; x--) {
