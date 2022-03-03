@@ -7,9 +7,6 @@
         <Property name="location" type="java.awt.Point" editor="org.netbeans.beaninfo.editors.PointEditor">
           <Point value="[0, 0]"/>
         </Property>
-        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[387, 170]"/>
-        </Property>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[387, 170]"/>
         </Property>
@@ -416,9 +413,6 @@
         <Container class="javax.swing.JPanel" name="PanelVisual">
           <Properties>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[600, 600]"/>
-            </Property>
-            <Property name="size" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[600, 600]"/>
             </Property>
           </Properties>
@@ -1057,35 +1051,29 @@
     </Container>
     <Container class="javax.swing.JFrame" name="FrameKey">
       <Properties>
+        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[164, 300]"/>
+        </Property>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[153, 300]"/>
+          <Dimension value="[164, 230]"/>
         </Property>
         <Property name="size" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[153, 300]"/>
+          <Dimension value="[164, 230]"/>
         </Property>
       </Properties>
 
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="colorPanel" max="32767" attributes="0"/>
                       <Component id="mainLabel9" alignment="0" max="32767" attributes="0"/>
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="color1Label" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="color2Label" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="color3Label" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="color4Label" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="color5Label" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="0" pref="95" max="32767" attributes="0"/>
-                      </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="pattern41Label" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="pattern42Label" max="32767" attributes="0"/>
+                          <Component id="pattern42Label" pref="86" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="pattern31Label" min="-2" max="-2" attributes="0"/>
@@ -1110,7 +1098,7 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Component id="mainLabel9" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -1132,17 +1120,9 @@
                       <Component id="pattern41Label" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="pattern42Label" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="color1Label" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="color2Label" min="-2" max="-2" attributes="0"/>
+                  <Component id="colorPanel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="color3Label" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="color4Label" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="color5Label" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="60" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -1197,39 +1177,29 @@
             <Property name="text" type="java.lang.String" value="N/A"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="color1Label">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Color 1"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="color2Label">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Color 2"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="color3Label">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Color 3"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="color4Label">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Color 4"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="color5Label">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Color 5"/>
-          </Properties>
-        </Component>
+        <Container class="javax.swing.JPanel" name="colorPanel">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new ColorPanel()"/>
+          </AuxValues>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="0" pref="94" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+        </Container>
       </SubComponents>
     </Container>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[252, 211]"/>
-    </Property>
     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[252, 211]"/>
     </Property>
@@ -1252,6 +1222,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,0,-74,0,0,1,26"/>
   </AuxValues>
 
   <Layout>
@@ -1358,9 +1329,6 @@
     <Component class="javax.swing.JLabel" name="pegLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="Number of Pegs"/>
-        <Property name="size" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[100, 16]"/>
-        </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="pegTextField">

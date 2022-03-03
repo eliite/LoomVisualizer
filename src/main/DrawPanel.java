@@ -45,9 +45,6 @@ public class DrawPanel extends JPanel {
                 pattern[b][i] = (FrameMain.getPattern(b).charAt(i) == 'N');
         }
         
-        g.setColor(new Color(60, 63, 65));
-        g.fillRect(0, 0, 600, 600);
-        
         int n = 20, gap = 20;
         int squareSize = 28;
         int squareGap = 0+squareSize;
