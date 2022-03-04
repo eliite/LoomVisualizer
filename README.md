@@ -24,7 +24,7 @@ and "N" represents the new color (the color that is being transitioned to).
 
 This means that per two pegs on the loom, one is of the old color, and one is of the new color. This works out perfectly, since 24 and 36 are divisible by 2 (the size of the pattern).
 However, a problem arises when a prime number is used, like 31 or 41. For example, on a loom with 31 pegs, an even pattern will not be completed a whole number of times.
-Since 31 (peg size) divided by 2 (pattern length) is exactly 15.5. Therefore, a pattern of 2 will repeat 15 times and then only finish half of the 16th pattern.
+Since 31 (peg size) divided by 2 (pattern length) is exactly 15.5, a pattern of 2 will repeat 15 times and then only finish half of the 16th pattern.
 
 The difference between odd and even loom sizes create a discrepancy in patterns. A non-divisible pattern length on a certain-sized loom will create a slanted design,
 while a divisible pattern length on the same loom will create a straight upward design. The differences in these patterns will be demonstrated visually later,
@@ -62,7 +62,7 @@ Graph of the output of a hat on a loom with 31 pegs and a pattern of length 2 - 
 A hat with four complex patterns, different row sizes, and five different colors (Version 7):
 ![Example 8](/images/Example8.png)
 
-## Update
+## Update [V7]
 With increasing complexity to match the demand of hat designs, I published a Version 7 update which added a significant number of new features. For one, the program now prompted the user to select a number of patterns. A user can select between one and four patterns (any more or less would be hard to picture on a hat). Then, the user can select **n+1** colors, where **n** is the number of patterns (4 patterns - 5 colors). This is the highest number of patterns needed for the type of knitting the program was designed for. Additionally, the user can change the number of rows that a pattern applies for. A pattern lasting two rows will transition to the next pattern much differently than the same pattern lasting five rows. With all of these new options, I found it may be difficult to keep track of each changing variable. To counteract this, I added a key which reminds the user of which patterns they selected and which colors they picked.
 
 Along with that, there is now a new user interface. Pictured below are examples of the program's windows.
@@ -75,6 +75,21 @@ The Visual tab, where the pattern is drawn
 
 The Key tab
 ![Example 7](/images/Example7.png)
+
+## Update [V8]
+
+To simplify the program, the theme of the program is now lighter than previous. Additionally, there is an array of squares which identify the color key used in the visualizer. This is to avoid the issue when a user selects the color white as a color (causing the text to disappear into the background). 
+
+Pictured below are example windows of the program:
+
+The Main tab
+![Example 9](/images/Example9.png)
+
+The Visual tab
+![Example 11](/images/Example11.png)
+
+The Key tab
+![Example 10](/images/Example10.png)
 
 ## Conclusion
 
