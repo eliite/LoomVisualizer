@@ -1,7 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/* DrawPanel by Jacek Strotz
+ *
+ * Purpose: This panel creates the 20x20 square grid that visualizes
+ * the hat patterns. 
+ *
+ * NOTE: The Draw(...) function could be grossly oversimplified. However,
+ * I figured I would leave each pattern as discrete for now.
  */
 package main;
 
@@ -11,10 +14,6 @@ import java.awt.Graphics;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-/**
- *
- * @author strotz
- */
 public class DrawPanel extends JPanel {
     public DrawPanel() {
         setLayout(null);

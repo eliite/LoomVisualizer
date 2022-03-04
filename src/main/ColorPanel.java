@@ -1,3 +1,8 @@
+/* ColorPanel by Jacek Strotz
+ *
+ * Purpose: A subclass of JPanel to draw the FrameKey information.
+ * More specifically, draw the color boxes used to create the visual.
+ */
 package main;
 
 import java.awt.Color;

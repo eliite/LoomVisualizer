@@ -1,17 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package main;
+
 import java.awt.Color;
 import java.awt.Point;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.UIManager;
+
 import regex.CustomFilter;
 
 import com.formdev.flatlaf.FlatLightLaf;
-
-import javax.swing.UIManager;
 
 public class FrameMain extends javax.swing.JFrame {
 
