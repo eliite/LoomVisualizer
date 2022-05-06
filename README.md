@@ -97,5 +97,5 @@ Ultimately, this program allows a hobbyist to examine an instant graphical repre
 instantly instead of spending an unrealistic amount of time graphing by hand.
 
 ### Details
-This project was done as request by Dr. Anne Triplet from the University of Mount Union. There were no benefits or punishments for completion or failure of this 
+This project was done as request by Dr. Anne Triplett from the University of Mount Union. There were no benefits or punishments for completion or failure of this 
 project. This program was written in Java purely as a demonstration of self-taught capabilities and as an exercise to improve my Java knowledge.
